@@ -1,9 +1,9 @@
 from google import genai
 import os
-API_TOKEN = os.getenv("API_TOKEN")
+API_KEY = os.getenv("API_KEY")
 class GeminiClient:
     def __init__(self):
-        self.client = genai.Client(api_key=API_TOKEN)
+        self.client = genai.Client(api_key=API_KEY)
         self.current_mode = "default"
         self.system_instructions = {}
         self.loadfromFile()
