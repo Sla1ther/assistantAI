@@ -8,8 +8,8 @@ async def main():
         print("Token not found. Please set the BOT_TOKEN environment variable.")
 
     ai_client = GeminiClient()
-    bot = TelegramBot(coreAI=ai_client, token=BOT_TOKEN)
-    await bot.start_polling
+    bot = TelegramBot(cl=ai_client, token=BOT_TOKEN)
+    await bot.start_polling()
 
 if __name__ == "__main__":
     asyncio.run(main())
