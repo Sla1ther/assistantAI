@@ -17,7 +17,7 @@ def run_flask():
 async def main():
     BOT_TOKEN = os.getenv("BOT_TOKEN")
     if not BOT_TOKEN:
-        print("Token not found. Please set the BOT_TOKEN environment variable.")
+        print("Token not found. Please set the BOT_TOKEN environment variable.", flush=True)
 
     ai_client = GeminiClient()
     bot = TelegramBot(client=ai_client, token=BOT_TOKEN)

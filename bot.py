@@ -28,18 +28,18 @@ class TelegramBot:
                 "Напишіть мені щось, і я відповім вам АБО обирай режим\n",
                 reply_markup=self.botKeyboard()
             )
-            print(f"New user started TG bot: {message.from_user.id}")
+            print(f"New user started TG bot: {message.from_user.id}", flush=True)
         
         @self.router.message(lambda m: m.text == "Default" or m.text == "Programmer")
         async def ModeChange(message: Message):
             if message.text == "Default":
                 self.cl.setMode("default")
                 await message.answer("Режим змінено на Default")
-                print(f"User {message.from_user.id} changed mode to Default")
+                print(f"User {message.from_user.id} changed mode to Default", flush=True)
             elif message.text == "Programmer":
                 self.cl.setMode("programmer")
                 await message.answer("Режим змінено на Programmer")
-                print(f"User {message.from_user.id} changed mode to Programmer")
+                print(f"User {message.from_user.id} changed mode to Programmer", flush=True)
 
         @self.router.message(lambda m: m.text == "History")
         async def history(message: Message):
@@ -54,7 +54,7 @@ class TelegramBot:
         async def aiChat(message: Message):
             if message.text.startswith('/'):
                 return
-            print(f"Отримано {message.text[:50]}")
+            print(f"Отримано {message.text[:50]}", flush=True)
             await message.answer("Думаю...")
             
             response = self.cl.ask(message.text)
@@ -78,7 +78,7 @@ class TelegramBot:
 
     def runBot(self):
         async def main():
-            print("🤖 Telegram Bot запущено")
+            print("🤖 Telegram Bot запущено", flush=True)
             await self.dp.start_polling(self.bot)
        
         asyncio.run(main())
